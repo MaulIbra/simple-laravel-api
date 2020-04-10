@@ -18,3 +18,6 @@ Route::post('comment/create','Api\CommentController@create')->middleware('jwtAut
 Route::post('comment/delete','Api\CommentController@delete')->middleware('jwtAuth');
 Route::post('comment/update','Api\CommentController@update')->middleware('jwtAuth');
 Route::get('posts/comments','Api\CommentController@comments')->middleware('jwtAuth');
+
+//likes
+Route::post('posts/like','Api\LikeController@like')->middleware('jwtAuth');
