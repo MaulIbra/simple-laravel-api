@@ -15,7 +15,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->unsignedBigInteger('post_id');
             $table->string('comment');
             $table->timestamps();
@@ -23,6 +23,11 @@ class CreateCommentsTable extends Migration
             $table->foreign('user_id')->references('id')
             ->on('users')->onDelete('cascade');
 
+            $table->foreign('post_id')->references('id')
+            ->on('post')->onDelete('cascade');
+        });
+
+        Schema::create('comments', function (Blueprint $table) {
             $table->foreign('post_id')->references('id')
             ->on('post')->onDelete('cascade');
         });
